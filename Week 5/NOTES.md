@@ -182,9 +182,9 @@ b. Free target
 
  #### Links
  [Linked Lists - Computerphile](https://youtu.be/_jQhALI4ujg)
+<br>
+<br>
 
-<br>
-<br>
 ## [Hash Tables](https://cs50.harvard.edu/x/2023/shorts/hash_tables/)
 - Hash tables combine the random access ability of arrays with the dynamism of linked lists
 - If implemented correctly almost all operations can start to tend toward constant time
