@@ -413,17 +413,27 @@ stack;
 
 - push()
     - Dinamically allocate new node (always check for NULL)
+
     ![push](images/stackll1.png)
+
     - Set the new node next pointer to point to the current head of the list
+
     ![push](images/stackll2.png)
+
     - Move head pointer to the new node
+
     ![push](images/stackll3.png)
 
 
 - pop()
     - Traverse to the second element of the list (trav = trav.next)
+
     ![pop](images/stackll4.png)
+
     - Free the head of the list
+
     ![pop](images/stackll5.png)
+
     - Move the head pointer to the (former) second element
+    
     ![pop](images/stackll6.png)
