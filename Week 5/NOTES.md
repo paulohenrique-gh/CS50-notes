@@ -29,9 +29,9 @@
 - Lookup - Fast, almost as fast as an array
 - Generally already sorted
 - Becomes huge in size very fast
-<br>
-<br>
-## [Structures](https://cs50.harvard.edu/x/2023/shorts/structures/)
+***
+
+[Structures](https://cs50.harvard.edu/x/2023/shorts/structures/)
 - Structures allow us to put several variables of different types into a single new type that can have it's own name.
 - They use `struct` in C to create this "super-variable"
 
@@ -96,6 +96,7 @@ e. return a pointer to the newly created sllnode (return node that was created)
 
 2. **Search for an element**
 
+
 **IMPORTANT** - Always keep track of the first element of the list, maybe even put it in a global variable
 ```c
 //function
@@ -108,6 +109,7 @@ d. If you've reached the end (NULL), return false
 ![search](images/linkedlistSearch.png)
 
 3. **Insert new node**
+
 
 **IMPORTANT** - Always keep track of the first element of the list, maybe even put it in a global variable
 ```c
