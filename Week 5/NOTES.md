@@ -31,7 +31,7 @@
 - Becomes huge in size very fast
 ***
 
-[Structures](https://cs50.harvard.edu/x/2023/shorts/structures/)
+## [Structures](https://cs50.harvard.edu/x/2023/shorts/structures/)
 - Structures allow us to put several variables of different types into a single new type that can have it's own name.
 - They use `struct` in C to create this "super-variable"
 
