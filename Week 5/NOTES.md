@@ -120,6 +120,8 @@ c. Insert new node at the beginning of the linked list
 d. Return pointer to the new head of the linked list
 ```
 ![insert](images/linkedlistInsert.png)
+
+
 **IMPORTANT** - Make sure to set the new node's next pointer to the old head of the list, then set the head of the list to the new node
 
 4. **Delete single element**
