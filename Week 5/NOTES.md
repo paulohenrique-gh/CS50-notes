@@ -132,6 +132,75 @@ b. Delete the rest of the list (recursion)
 c. Free the current node
 ```
 ![delete](images/linkedlistDelete.png)
+
+**Example**
+
+```c
+#include <stdio.h>
+#include <cs50.h>
+#include <stdlib.h>
+
+typedef struct node
+{
+    string phrase;
+    struct node *next;
+}
+node;
+
+#define LIST_SIZE 2
+
+void unload(node *list);
+void visualize(node *list);
+
+int main(void)
+{
+    node *list = NULL; //create list, currently empty
+
+    for (int i = 0; i < LIST_SIZE; i++)
+    {
+        string phrase = get_string("Enter a new phrase: ");
+
+        node *n = malloc(sizeof(node)); //alloc memory for node
+        if (n == NULL) //check for null
+        {
+            printf("Couldn't allocate memory\n");
+        }
+        n->phrase = phrase; //set the new node phrase attribute to be whatever the user input was
+        n->next = list; //set the next attribute to point to where list pointer is poining at
+        //IT'S IMPORTANT TO FOLLOW THIS ORDER OF OPERATION, OTHERWISE WE LOSE THE NODE WE JUST CREATED AND GET A SEGMENTATION FAULT
+        list = n; //set the head of the list to the current node. the last node created will be the head
+        visualize(list);
+    }
+
+    unload(list);
+
+}
+
+void unload(node *list)
+{
+    while (list != NULL)
+    {
+        node *ptr = list->next; //create a new pointer to point to the second node on the list, if we free the first node directly we lose the rest of the nodes
+        free(list); //free the memory for the current head of the node
+        list = ptr; //make list point to where ptr is currently pointing to
+        //repeat until list points to null, which means the list is empty
+    }
+}
+
+void visualize(node *list)
+{
+    printf("\n+-- List Visualizer --+\n\n");
+    while (list != NULL)
+    {
+        printf("Location %p\n", list); //print out the address of the head of the list
+        printf("Phrase: \"%s\"\n", list->phrase); //print out the phrase and then the next atributes
+        printf("Next: %p\n\n", list->next); // the next attribute is the address of the next node
+        list = list->next; //set list no point to the next node
+        //repeat until list points to null
+    }
+    printf("--------------------\n");
+}
+```
 ***
 ## [Doubly-Linked Lists](https://cs50.harvard.edu/x/2023/shorts/doubly_linked_lists/#doubly-linked-lists)
 - Doubly-linked lists, unlike singly-linked lists, allow us to move forward and backward through the list by adding an extra pointer pointing to the previous node, making it easier to delete a single element in the list
@@ -220,8 +289,49 @@ unsigned int hash(char* str)
 
 ### Links
 [Understanding and implementing a Hash Table (in C)](https://www.youtube.com/watch?v=2Ti5yvumFTU)
-<br>
-<br>
+
+**Example - Hash function**
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <cs50.h>
+#include <ctype.h>
+
+typedef struct node
+{
+    string phrase;
+    struct node *next;
+}
+node;
+
+node *table[26];
+
+int hash(string phrase);
+
+int main(void)
+{
+    for (int i = 0; i < 3; i++)
+    {
+        string phrase = get_string("Enter a new phrase: ");
+        int index = hash(phrase);
+        printf("%s hashes to %i\n", phrase, index);
+    }
+}
+
+int hash(string phrase)
+{
+    //generates hash code that represents the index of the array the user input is going to be stored in
+    return toupper(phrase[0]) - 'A'; //take the first letter of the phrase, generalize it to upper case, then subtract 'A' to get an index number consistent with the letter in the alphabet
+}
+
+//good hash functions:
+//- always gives the same value for the same input
+//- produces an even distribution across buckets
+//- uses all buckets
+```
+
+***
 
 ## [Tries](https://cs50.harvard.edu/x/2023/shorts/tries/)
 - Tries combine structures and pointers to store data
